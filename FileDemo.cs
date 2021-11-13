@@ -15,17 +15,20 @@ namespace ReadFile
 
             string fileToRead = $"{path}/{file}";
 
-            Console.WriteLine($"Reading File:{fileToRead}");
+            //Console.WriteLine($"Reading File:{fileToRead}");
 
             try
             {
                 using (StreamReader sr = new StreamReader(fileToRead))
                 {
-                    Console.WriteLine($"Starting to read {fileToRead}");
+                    //Console.WriteLine($"Starting to read {fileToRead}");
                     string line;
+                    
                     while ((line = sr.ReadLine()) is not null)
                     {
-                        Console.WriteLine(line);
+                        string[] splitData = line.Split(":");
+                        string heroName = String.Format("{0,-20}", splitData[0]);
+                        Console.WriteLine($"{heroName}\t{splitData[1]}");
                     }
                 }
             }
@@ -34,6 +37,8 @@ namespace ReadFile
                 Console.WriteLine($"The {fileToRead} could not be read");
                 Console.WriteLine(e.Message);
             }
+            
+            FileDemo.OutputSeparator();
 
         }
 
