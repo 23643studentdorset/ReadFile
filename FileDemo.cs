@@ -62,5 +62,33 @@ namespace ReadFile
             }
         
         }
+
+        public static void OutputSeparator()
+        {
+            Console.WriteLine("=".PadRight(80, '='));
+        }
+
+        public static char[] SplitAsString(string stringToSplit)
+        {
+
+            char[] characters = stringToSplit.ToCharArray();
+
+            foreach (char c in characters)
+            {
+                Console.Write($" {c} ");
+
+            }
+            Console.WriteLine();
+
+
+            return characters;
+
+            // faster way is to just write:
+            //return stringToSplit.ToCharArray();
+
+
+        }
+
+
     }
 }
